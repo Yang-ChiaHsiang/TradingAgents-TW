@@ -502,8 +502,8 @@ def get_user_selections():
     # Step 1: Ticker symbol
     console.print(
         create_question_box(
-            "Step 1: Ticker Symbol",
-            "Enter the exact ticker symbol to analyze, including exchange suffix when needed (examples: SPY, CNC.TO, 7203.T, 0700.HK)",
+            "步驟 1: 股票代號",
+            "請輸入要分析的股票代號，包括需要時的交易所後綴 (範例: SPY, CNC.TO, 7203.T, 0700.HK)",
             "SPY",
         )
     )
@@ -513,8 +513,8 @@ def get_user_selections():
     default_date = datetime.datetime.now().strftime("%Y-%m-%d")
     console.print(
         create_question_box(
-            "Step 2: Analysis Date",
-            "Enter the analysis date (YYYY-MM-DD)",
+            "步驟 2: 分析日期",
+            "請輸入分析日期 (YYYY-MM-DD)",
             default_date,
         )
     )
@@ -523,8 +523,8 @@ def get_user_selections():
     # Step 3: Output language
     console.print(
         create_question_box(
-            "Step 3: Output Language",
-            "Select the language for analyst reports and final decision"
+            "步驟 3: 輸出語言",
+            "請選擇分析師報告與最終決策的輸出語言"
         )
     )
     output_language = ask_output_language()
@@ -532,18 +532,18 @@ def get_user_selections():
     # Step 4: Select analysts
     console.print(
         create_question_box(
-            "Step 4: Analysts Team", "Select your LLM analyst agents for the analysis"
+            "步驟 4: 分析師團隊", "請選擇用於分析的 LLM 分析師代理"
         )
     )
     selected_analysts = select_analysts()
     console.print(
-        f"[green]Selected analysts:[/green] {', '.join(analyst.value for analyst in selected_analysts)}"
+        f"[green]已選擇的分析師:[/green] {', '.join(analyst.value for analyst in selected_analysts)}"
     )
 
     # Step 5: Research depth
     console.print(
         create_question_box(
-            "Step 5: Research Depth", "Select your research depth level"
+            "步驟 5: 研究深度", "請選擇您的研究深度級別"
         )
     )
     selected_research_depth = select_research_depth()
@@ -551,7 +551,7 @@ def get_user_selections():
     # Step 6: LLM Provider
     console.print(
         create_question_box(
-            "Step 6: LLM Provider", "Select your LLM provider"
+            "步驟 6: LLM 供應商", "請選擇您的 LLM 供應商"
         )
     )
     selected_llm_provider, backend_url = select_llm_provider()
@@ -559,7 +559,7 @@ def get_user_selections():
     # Step 7: Thinking agents
     console.print(
         create_question_box(
-            "Step 7: Thinking Agents", "Select your thinking agents for analysis"
+            "步驟 7: 思考代理", "請選擇用於分析的思考代理"
         )
     )
     selected_shallow_thinker = select_shallow_thinking_agent(selected_llm_provider)
@@ -574,24 +574,24 @@ def get_user_selections():
     if provider_lower == "google":
         console.print(
             create_question_box(
-                "Step 8: Thinking Mode",
-                "Configure Gemini thinking mode"
+                "步驟 8: 思考模式",
+                "設定 Gemini 思考模式"
             )
         )
         thinking_level = ask_gemini_thinking_config()
     elif provider_lower == "openai":
         console.print(
             create_question_box(
-                "Step 8: Reasoning Effort",
-                "Configure OpenAI reasoning effort level"
+                "步驟 8: 推理程度",
+                "設定 OpenAI 推理程度級別"
             )
         )
         reasoning_effort = ask_openai_reasoning_effort()
     elif provider_lower == "anthropic":
         console.print(
             create_question_box(
-                "Step 8: Effort Level",
-                "Configure Claude effort level"
+                "步驟 8: 效能級別",
+                "設定 Claude 效能級別"
             )
         )
         anthropic_effort = ask_anthropic_effort()

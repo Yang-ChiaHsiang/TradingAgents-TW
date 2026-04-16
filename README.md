@@ -25,13 +25,14 @@
 
 ---
 
-# TradingAgents: Multi-Agents LLM Financial Trading Framework
+# TradingAgents：多智能體 LLM 金融交易框架
 
-## News
-- [2026-03] **TradingAgents v0.2.3** released with multi-language support, GPT-5.4 family models, unified model catalog, backtesting date fidelity, and proxy support.
-- [2026-03] **TradingAgents v0.2.2** released with GPT-5.4/Gemini 3.1/Claude 4.6 model coverage, five-tier rating scale, OpenAI Responses API, Anthropic effort control, and cross-platform stability.
-- [2026-02] **TradingAgents v0.2.0** released with multi-provider LLM support (GPT-5.x, Gemini 3.x, Claude 4.x, Grok 4.x) and improved system architecture.
-- [2026-01] **Trading-R1** [Technical Report](https://arxiv.org/abs/2509.11420) released, with [Terminal](https://github.com/TauricResearch/Trading-R1) expected to land soon.
+## 最新消息
+
+- [2026-03] **TradingAgents v0.2.3** 發布，新增多語言支援、GPT-5.4 系列模型、統一模型目錄、回測日期精確度提升及代理伺服器支援。
+- [2026-03] **TradingAgents v0.2.2** 發布，涵蓋 GPT-5.4/Gemini 3.1/Claude 4.6 模型、五級評分量表、OpenAI Responses API、Anthropic 推理強度控制及跨平台穩定性改善。
+- [2026-02] **TradingAgents v0.2.0** 發布，支援多供應商 LLM（GPT-5.x、Gemini 3.x、Claude 4.x、Grok 4.x）並改善系統架構。
+- [2026-01] **Trading-R1** [技術報告](https://arxiv.org/abs/2509.11420) 發布，[終端程式](https://github.com/TauricResearch/Trading-R1)預計即將推出。
 
 <div align="center">
 <a href="https://www.star-history.com/#TauricResearch/TradingAgents&Date">
@@ -43,97 +44,106 @@
 </a>
 </div>
 
-> 🎉 **TradingAgents** officially released! We have received numerous inquiries about the work, and we would like to express our thanks for the enthusiasm in our community.
+> 🎉 **TradingAgents** 正式發布！我們收到了大量關於本專案的詢問，非常感謝社群夥伴們的熱情支持。
 >
-> So we decided to fully open-source the framework. Looking forward to building impactful projects with you!
+> 因此我們決定將框架完全開源，期待與大家共同打造具有影響力的專案！
 
 <div align="center">
 
-🚀 [TradingAgents](#tradingagents-framework) | ⚡ [Installation & CLI](#installation-and-cli) | 🎬 [Demo](https://www.youtube.com/watch?v=90gr5lwjIho) | 📦 [Package Usage](#tradingagents-package) | 🤝 [Contributing](#contributing) | 📄 [Citation](#citation)
+🚀 [TradingAgents](#tradingagents-框架) | ⚡ [安裝與 CLI](#安裝與-cli) | 🎬 [示範影片](https://www.youtube.com/watch?v=90gr5lwjIho) | 📦 [套件使用](#tradingagents-套件) | 🤝 [貢獻指南](#貢獻指南) | 📄 [引用](#引用)
 
 </div>
 
-## TradingAgents Framework
+## TradingAgents 框架
 
-TradingAgents is a multi-agent trading framework that mirrors the dynamics of real-world trading firms. By deploying specialized LLM-powered agents: from fundamental analysts, sentiment experts, and technical analysts, to trader, risk management team, the platform collaboratively evaluates market conditions and informs trading decisions. Moreover, these agents engage in dynamic discussions to pinpoint the optimal strategy.
+TradingAgents 是一個多智能體交易框架，模擬真實交易公司的運作模式。透過部署專業化的 LLM 驅動智能體——從基本面分析師、情緒專家、技術分析師，到交易員與風險管理團隊——平台協同評估市場狀況並做出交易決策。此外，這些智能體還會進行動態討論，以找出最佳策略。
 
 <p align="center">
   <img src="assets/schema.png" style="width: 100%; height: auto;">
 </p>
 
-> TradingAgents framework is designed for research purposes. Trading performance may vary based on many factors, including the chosen backbone language models, model temperature, trading periods, the quality of data, and other non-deterministic factors. [It is not intended as financial, investment, or trading advice.](https://tauric.ai/disclaimer/)
+> TradingAgents 框架專為研究用途設計。交易表現可能因多種因素而有所不同，包括所選擇的基礎語言模型、模型溫度、交易週期、資料品質及其他不確定因素。[本框架不構成任何財務、投資或交易建議。](https://tauric.ai/disclaimer/)
 
-Our framework decomposes complex trading tasks into specialized roles. This ensures the system achieves a robust, scalable approach to market analysis and decision-making.
+本框架將複雜的交易任務分解為專業化角色，確保系統以穩健、可擴展的方式進行市場分析與決策。
 
-### Analyst Team
-- Fundamentals Analyst: Evaluates company financials and performance metrics, identifying intrinsic values and potential red flags.
-- Sentiment Analyst: Analyzes social media and public sentiment using sentiment scoring algorithms to gauge short-term market mood.
-- News Analyst: Monitors global news and macroeconomic indicators, interpreting the impact of events on market conditions.
-- Technical Analyst: Utilizes technical indicators (like MACD and RSI) to detect trading patterns and forecast price movements.
+### 分析師團隊
+
+- **基本面分析師**：評估公司財務狀況與績效指標，識別內在價值與潛在風險。
+- **情緒分析師**：運用情緒評分演算法分析社群媒體與公眾輿論，衡量短期市場情緒。
+- **新聞分析師**：監控全球新聞與總體經濟指標，解讀事件對市場狀況的影響。
+- **技術分析師**：運用技術指標（如 MACD 和 RSI）偵測交易型態並預測價格走勢。
 
 <p align="center">
   <img src="assets/analyst.png" width="100%" style="display: inline-block; margin: 0 2%;">
 </p>
 
-### Researcher Team
-- Comprises both bullish and bearish researchers who critically assess the insights provided by the Analyst Team. Through structured debates, they balance potential gains against inherent risks.
+### 研究員團隊
+
+- 由多頭與空頭研究員組成，對分析師團隊提供的洞察進行批判性評估。透過結構化辯論，在潛在收益與固有風險之間取得平衡。
 
 <p align="center">
   <img src="assets/researcher.png" width="70%" style="display: inline-block; margin: 0 2%;">
 </p>
 
-### Trader Agent
-- Composes reports from the analysts and researchers to make informed trading decisions. It determines the timing and magnitude of trades based on comprehensive market insights.
+### 交易員智能體
+
+- 整合分析師與研究員的報告，做出知情的交易決策。根據全面的市場洞察決定交易的時機與規模。
 
 <p align="center">
   <img src="assets/trader.png" width="70%" style="display: inline-block; margin: 0 2%;">
 </p>
 
-### Risk Management and Portfolio Manager
-- Continuously evaluates portfolio risk by assessing market volatility, liquidity, and other risk factors. The risk management team evaluates and adjusts trading strategies, providing assessment reports to the Portfolio Manager for final decision.
-- The Portfolio Manager approves/rejects the transaction proposal. If approved, the order will be sent to the simulated exchange and executed.
+### 風險管理與投資組合經理
+
+- 透過評估市場波動性、流動性及其他風險因素，持續評估投資組合風險。風險管理團隊評估並調整交易策略，向投資組合經理提供評估報告以供最終決策。
+- 投資組合經理核准或拒絕交易提案。若核准，訂單將發送至模擬交易所並執行。
 
 <p align="center">
   <img src="assets/risk.png" width="70%" style="display: inline-block; margin: 0 2%;">
 </p>
 
-## Installation and CLI
+## 安裝與 CLI
 
-### Installation
+### 安裝
 
-Clone TradingAgents:
+複製 TradingAgents 儲存庫：
+
 ```bash
 git clone https://github.com/TauricResearch/TradingAgents.git
 cd TradingAgents
 ```
 
-Create a virtual environment in any of your favorite environment managers:
+在您常用的環境管理工具中建立虛擬環境：
+
 ```bash
 conda create -n tradingagents python=3.13
 conda activate tradingagents
 ```
 
-Install the package and its dependencies:
+安裝套件及其相依套件：
+
 ```bash
 pip install .
 ```
 
 ### Docker
 
-Alternatively, run with Docker:
+或者，使用 Docker 執行：
+
 ```bash
-cp .env.example .env  # add your API keys
+cp .env.example .env  # 填入您的 API 金鑰
 docker compose run --rm tradingagents
 ```
 
-For local models with Ollama:
+使用 Ollama 執行本地模型：
+
 ```bash
 docker compose --profile ollama run --rm tradingagents-ollama
 ```
 
-### Required APIs
+### 必要 API
 
-TradingAgents supports multiple LLM providers. Set the API key for your chosen provider:
+TradingAgents 支援多個 LLM 供應商。請為您選擇的供應商設定 API 金鑰：
 
 ```bash
 export OPENAI_API_KEY=...          # OpenAI (GPT)
@@ -141,35 +151,38 @@ export GOOGLE_API_KEY=...          # Google (Gemini)
 export ANTHROPIC_API_KEY=...       # Anthropic (Claude)
 export XAI_API_KEY=...             # xAI (Grok)
 export DEEPSEEK_API_KEY=...        # DeepSeek
-export DASHSCOPE_API_KEY=...       # Qwen (Alibaba DashScope)
-export ZHIPU_API_KEY=...           # GLM (Zhipu)
+export DASHSCOPE_API_KEY=...       # Qwen (阿里巴巴 DashScope)
+export ZHIPU_API_KEY=...           # GLM (智譜)
 export OPENROUTER_API_KEY=...      # OpenRouter
 export ALPHA_VANTAGE_API_KEY=...   # Alpha Vantage
 ```
 
-For enterprise providers (e.g. Azure OpenAI, AWS Bedrock), copy `.env.enterprise.example` to `.env.enterprise` and fill in your credentials.
+對於企業供應商（如 Azure OpenAI、AWS Bedrock），請將 `.env.enterprise.example` 複製為 `.env.enterprise` 並填入您的憑證。
 
-For local models, configure Ollama with `llm_provider: "ollama"` in your config.
+對於本地模型，請在設定檔中以 `llm_provider: "ollama"` 配置 Ollama。
 
-Alternatively, copy `.env.example` to `.env` and fill in your keys:
+或者，將 `.env.example` 複製為 `.env` 並填入您的金鑰：
+
 ```bash
 cp .env.example .env
 ```
 
-### CLI Usage
+### CLI 使用方式
 
-Launch the interactive CLI:
+啟動互動式 CLI：
+
 ```bash
-tradingagents          # installed command
-python -m cli.main     # alternative: run directly from source
+tradingagents          # 已安裝的指令
+python -m cli.main     # 替代方式：直接從原始碼執行
 ```
-You will see a screen where you can select your desired tickers, analysis date, LLM provider, research depth, and more.
+
+您將看到一個畫面，可在其中選擇所需的股票代碼、分析日期、LLM 供應商、研究深度等設定。
 
 <p align="center">
   <img src="assets/cli/cli_init.png" width="100%" style="display: inline-block; margin: 0 2%;">
 </p>
 
-An interface will appear showing results as they load, letting you track the agent's progress as it runs.
+介面將顯示載入中的結果，讓您在智能體執行時追蹤其進度。
 
 <p align="center">
   <img src="assets/cli/cli_news.png" width="100%" style="display: inline-block; margin: 0 2%;">
@@ -179,15 +192,15 @@ An interface will appear showing results as they load, letting you track the age
   <img src="assets/cli/cli_transaction.png" width="100%" style="display: inline-block; margin: 0 2%;">
 </p>
 
-## TradingAgents Package
+## TradingAgents 套件
 
-### Implementation Details
+### 實作細節
 
-We built TradingAgents with LangGraph to ensure flexibility and modularity. The framework supports multiple LLM providers: OpenAI, Google, Anthropic, xAI, OpenRouter, and Ollama.
+我們使用 LangGraph 建構 TradingAgents，以確保靈活性與模組化。框架支援多個 LLM 供應商：OpenAI、Google、Anthropic、xAI、OpenRouter 及 Ollama。
 
-### Python Usage
+### Python 使用方式
 
-To use TradingAgents inside your code, you can import the `tradingagents` module and initialize a `TradingAgentsGraph()` object. The `.propagate()` function will return a decision. You can run `main.py`, here's also a quick example:
+若要在程式碼中使用 TradingAgents，您可以匯入 `tradingagents` 模組並初始化 `TradingAgentsGraph()` 物件。`.propagate()` 函式將回傳一個決策。您可以執行 `main.py`，以下是快速範例：
 
 ```python
 from tradingagents.graph.trading_graph import TradingAgentsGraph
@@ -195,12 +208,12 @@ from tradingagents.default_config import DEFAULT_CONFIG
 
 ta = TradingAgentsGraph(debug=True, config=DEFAULT_CONFIG.copy())
 
-# forward propagate
+# 正向傳播
 _, decision = ta.propagate("NVDA", "2026-01-15")
 print(decision)
 ```
 
-You can also adjust the default configuration to set your own choice of LLMs, debate rounds, etc.
+您也可以調整預設設定，自訂 LLM 選擇、辯論輪次等。
 
 ```python
 from tradingagents.graph.trading_graph import TradingAgentsGraph
@@ -208,8 +221,8 @@ from tradingagents.default_config import DEFAULT_CONFIG
 
 config = DEFAULT_CONFIG.copy()
 config["llm_provider"] = "openai"        # openai, google, anthropic, xai, openrouter, ollama
-config["deep_think_llm"] = "gpt-5.4"     # Model for complex reasoning
-config["quick_think_llm"] = "gpt-5.4-mini" # Model for quick tasks
+config["deep_think_llm"] = "gpt-5.4"     # 用於複雜推理的模型
+config["quick_think_llm"] = "gpt-5.4-mini" # 用於快速任務的模型
 config["max_debate_rounds"] = 2
 
 ta = TradingAgentsGraph(debug=True, config=config)
@@ -217,24 +230,24 @@ _, decision = ta.propagate("NVDA", "2026-01-15")
 print(decision)
 ```
 
-See `tradingagents/default_config.py` for all configuration options.
+所有設定選項請參閱 `tradingagents/default_config.py`。
 
-## Contributing
+## 貢獻指南
 
-We welcome contributions from the community! Whether it's fixing a bug, improving documentation, or suggesting a new feature, your input helps make this project better. If you are interested in this line of research, please consider joining our open-source financial AI research community [Tauric Research](https://tauric.ai/).
+我們歡迎社群貢獻！無論是修復錯誤、改善文件，還是建議新功能，您的參與都有助於讓這個專案更加完善。如果您對這個研究方向感興趣，歡迎加入我們的開源金融 AI 研究社群 [Tauric Research](https://tauric.ai/)。
 
-## Citation
+## 引用
 
-Please reference our work if you find *TradingAgents* provides you with some help :)
+如果您覺得 _TradingAgents_ 對您有所幫助，請引用我們的研究 :)
 
 ```
 @misc{xiao2025tradingagentsmultiagentsllmfinancial,
-      title={TradingAgents: Multi-Agents LLM Financial Trading Framework}, 
+      title={TradingAgents: Multi-Agents LLM Financial Trading Framework},
       author={Yijia Xiao and Edward Sun and Di Luo and Wei Wang},
       year={2025},
       eprint={2412.20138},
       archivePrefix={arXiv},
       primaryClass={q-fin.TR},
-      url={https://arxiv.org/abs/2412.20138}, 
+      url={https://arxiv.org/abs/2412.20138},
 }
 ```

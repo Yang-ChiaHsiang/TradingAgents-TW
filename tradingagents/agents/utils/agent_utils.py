@@ -31,7 +31,10 @@ def get_language_instruction() -> str:
     lang = get_config().get("output_language", "English")
     if lang.strip().lower() == "english":
         return ""
-    return f" Write your entire response in {lang}."
+    elif lang.strip().lower() == "traditional chinese":
+        return f" Write your entire response in {lang} script, using Traditional Chinese characters."
+    else:
+        return f" Write your entire response in {lang}."
 
 
 def build_instrument_context(ticker: str) -> str:
